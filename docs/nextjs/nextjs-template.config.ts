@@ -4,4 +4,5 @@ export const nextJsTemplateSlugs = [
   { slug: "03-headers-and-footers" },
   { slug: "04-nextjs-routing-files" },
   { slug: "05-mdx-in-nextjs" },
+  { slug: "06-custom-styles" },
 ];

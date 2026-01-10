@@ -37,7 +37,9 @@ export default function RootLayout({
             <div className="min-h-screen flex flex-col justify-between">
               <MainHeader />
               <MaxWidthContainer>
-                <main className="w-full h-full">{children}</main>
+                <main className="w-full h-full prose max-w-none prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-secondary prose-h1:text-primary prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg dark:prose-invert">
+                  {children}
+                </main>
               </MaxWidthContainer>
               <MainFooter />
             </div>
