@@ -1,7 +1,3 @@
-# NextJS
+- routing files from nextjs - loading,error etc
 
-# ShadCn
-
-# Dark Mode
-
-# Mdx
+- mdx from next js along with code copy button
