@@ -3,6 +3,8 @@
 - Generic headers and footers for root layout
 - Helper components to be used at at the end of this document
 - Modify `app/layout.tsx` to use the Header and Footer
+- Note that the routes in NavLinksMenu have not been created yet.
+- It also may be a good time to modify the layout with some metadata
 
 ```tsx
 /* Other Code Above*/
