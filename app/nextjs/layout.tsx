@@ -10,13 +10,12 @@ const NextJSLayout = ({ children }: NextJSLayoutProps) => {
   const slugs = nextJsTemplateSlugs;
 
   return (
-    <article className="md:grid md:grid-cols-4">
+    <article className="md:grid md:grid-cols-5">
       <nav className="md:col-span-1 h-full max-h-screen overflow-y-auto no-scrollbar">
         <ListSlugsAsLinks slugs={slugs} basePath="/nextjs" />
       </nav>
-      <main className="md:col-span-3 h-full max-h-screen overflow-y-auto no-scrollbar">
-        {children}
-      </main>
+
+      <main className="md:col-span-4">{children}</main>
     </article>
   );
 };
