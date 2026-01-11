@@ -5,7 +5,7 @@ import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 const MainFooter = () => {
   return (
-    <footer className="w-full border-t-2 bg-muted">
+    <footer className="w-full sticky bottom-0 border-t-2 bg-muted">
       <MaxWidthContainer>
         <nav className="w-full flex justify-evenly items-center text-sm py-1">
           <p>© 2026 Aditya Dixit</p>

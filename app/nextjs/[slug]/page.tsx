@@ -12,11 +12,11 @@ export default async function Page({
   );
 
   return (
-    <div className="md:grid md:grid-cols-4">
-      <section className="col-span-3 h-full max-h-screen overflow-y-auto no-scrollbar">
+    <div className="md:grid md:grid-cols-4 h-full md:gap-x-8">
+      <section className="col-span-3 no-scrollbar ">
         <Post />
       </section>
-      <aside className="col-span-1">
+      <aside className="col-span-1 ">
         <H2Toc toc={tableOfContents} />
       </aside>
     </div>

@@ -6,7 +6,16 @@ type MaxWidthContainerProps = {
 };
 
 const MaxWidthContainer = ({ children, className }: MaxWidthContainerProps) => {
-  return <div className={cn("container mx-auto", className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        "container mx-auto h-full overflow-y-auto no-scrollbar",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default MaxWidthContainer;

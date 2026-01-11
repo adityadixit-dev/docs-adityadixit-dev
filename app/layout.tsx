@@ -32,12 +32,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div>
+        <div className="h-screen overflow-y-auto ">
           <Providers>
-            <div className="min-h-screen flex flex-col justify-between">
+            <div className="flex flex-col justify-between h-full">
               <MainHeader />
               <MaxWidthContainer>
-                <main className="w-full h-full prose max-w-none dark:prose-invert">
+                <main className="w-full prose max-w-none dark:prose-invert h-full no-scrollbar">
                   {children}
                 </main>
               </MaxWidthContainer>
