@@ -9,7 +9,7 @@ const MainHeader = () => {
       <MaxWidthContainer>
         <nav className="w-full flex justify-between items-center">
           <Link href="/">
-            <h2>Home</h2>
+            <h2>Docs</h2>
           </Link>
           <NavLinkMenu />
           <div className="flex items-center gap-x-2">

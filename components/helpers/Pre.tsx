@@ -31,7 +31,7 @@ export default function Pre({
         variant="outline"
         disabled={isCopied}
         onClick={handleClickCopy}
-        className="absolute right-4 size-8"
+        className="absolute right-4 size-8 hover:cursor-pointer"
       >
         {isCopied ? <Check /> : <Clipboard />}
       </Button>

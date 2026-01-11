@@ -1,4 +1,4 @@
-import { getAllSlugsInDir } from "@/lib/docs/get-all-slugs-in-dir";
+import { getAllSlugsInDir, SlugType } from "@/lib/docs/get-all-slugs-in-dir";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const currDir = __dirname;
 
-export const nextJsTemplateSlugs = getAllSlugsInDir(currDir);
+export const nextJsTemplateSlugs: SlugType[] = getAllSlugsInDir(currDir);
 
 // export const nextJsTemplateSlugs = [
 //   { slug: "01-install-nextjs" },

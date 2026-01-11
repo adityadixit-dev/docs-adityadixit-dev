@@ -90,7 +90,7 @@ export default function Pre({
         size="icon-lg"
         disabled={isCopied}
         onClick={handleClickCopy}
-        className="absolute right-4 size-6"
+        className="absolute right-4 size-8 hover:cursor-pointer"
       >
         {isCopied ? <Check /> : <Clipboard />}
       </Button>
