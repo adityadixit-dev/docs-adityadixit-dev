@@ -4,6 +4,7 @@ import { getAllSlugsInDir, SlugType } from "@/lib/docs/get-all-slugs-in-dir";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export default async function Page({
   params,
