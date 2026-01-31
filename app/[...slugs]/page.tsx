@@ -1,10 +1,12 @@
 import H2Toc from "@/components/helpers/H2Toc";
 import ListSlugsAsLinks from "@/components/helpers/ListSlugsAsLinks";
-import { getAllSlugsInDir, SlugType } from "@/lib/docs/get-all-slugs-in-dir";
+import {
+  CatchAllSlugsType,
+  getAllSlugsInDir,
+  getAllSlugsPath,
+  SlugType,
+} from "@/lib/docs/get-all-slugs-in-dir";
 import { notFound } from "next/navigation";
-
-export const dynamic = "force-static";
-export const dynamicParams = false;
 
 export default async function Page({
   params,
@@ -43,3 +45,10 @@ export default async function Page({
     }
   }
 }
+
+export function generateStaticParams() {
+  const allSlugs: CatchAllSlugsType[] = getAllSlugsPath("docs");
+  return allSlugs;
+}
+
+export const dynamicParams = false;

@@ -2,9 +2,6 @@ import ListSlugsAsLinks from "@/components/helpers/ListSlugsAsLinks";
 import { getAllSlugsInDir, SlugType } from "@/lib/docs/get-all-slugs-in-dir";
 import Link from "next/link";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
-
 const AllDocsLayout = async ({
   children,
   params,
