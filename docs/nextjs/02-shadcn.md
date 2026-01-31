@@ -35,7 +35,7 @@ export function ThemeProvider({
 }
 ```
 
-- Create `src/providers/Providers.tsx` and
+- Create `providers/Providers.tsx` and
 
 ```tsx
 "use client";
@@ -64,13 +64,15 @@ export default Providers;
 ```tsx
 import Providers from "@/providers/Providers";
 /* Other Code here...*/
-<html lang="en" suppressHydrationWarning>
-  <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-    <div>
-      <Providers>{children}</Providers>
-    </div>
-  </body>
-</html>;
+return (
+  <html lang="en" suppressHydrationWarning>
+    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <div>
+        <Providers>{children}</Providers>
+      </div>
+    </body>
+  </html>
+);
 ```
 
 ## Add Light Dark Button - Optional
@@ -112,7 +114,7 @@ export default LightDarkButton;
 
 ## Appendix
 
-### My Colour Theme
+### My Colour Theme - `globals.css`
 
 ```css
 @import "tailwindcss";

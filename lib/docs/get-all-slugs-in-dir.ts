@@ -5,11 +5,13 @@ export type SlugType = {
 };
 
 export function getAllSlugsInDir(dirPathName: string): SlugType[] {
-  const slugs = fs.readdirSync(dirPathName);
+  const files = fs.readdirSync(dirPathName, { withFileTypes: true });
 
-  return slugs
-    .filter((slug) => slug.endsWith(".md"))
-    .map((filteredSlug) => {
-      return { slug: filteredSlug.slice(0, -3) };
+  return files
+    .filter((file) => file.isDirectory() || file.name.endsWith(".md"))
+    .map((filteredFiles) => {
+      return filteredFiles.isDirectory()
+        ? { slug: filteredFiles.name }
+        : { slug: filteredFiles.name.slice(0, -3) };
     });
 }

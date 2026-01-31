@@ -2,7 +2,10 @@ import NavLinkButton, {
   NavLinkProps,
 } from "@/components/helpers/NavLinkButton";
 
-const navLinks: NavLinkProps[] = [{ linkText: "NextJS", href: "/nextjs" }];
+const navLinks: NavLinkProps[] = [
+  { linkText: "NextJS", href: "/nextjs" },
+  { linkText: "Databases", href: "/databases" },
+];
 
 const NavLinkMenu = () => {
   return (
