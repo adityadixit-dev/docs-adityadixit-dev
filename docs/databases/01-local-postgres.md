@@ -20,7 +20,7 @@ sudo systemctl status postgresql
 psql "postgres://postgres:postgres@localhost:5432/test_db"
 ```
 
-- Add `DATABASE_URL` to `.env` file
+- Add `DATABASE_URL` to `.env` file. Note `sslmode` should be disabled **ONLY** for local access during testing
 
 ```
 DATABASE_URL="postgres://postgres:postgres@localhost:5432/test_db?sslmode=disable"
