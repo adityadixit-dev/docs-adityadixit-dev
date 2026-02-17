@@ -2,21 +2,52 @@
 
 - This is a higher order function
 
+## When **NOT** to use this
+
+- If a scenario exists where a key in the `formData` object points to an array.
+- In that Scenario you will need to use a different function to convert `formData` to `rawData`
+
+### formDataToRaw Function
+
+```ts title="formdata-to-raw.ts"
+export function formDataToRaw(formData: FormData) {
+  type FormDataToRawType = {
+    [key: string]: FormDataEntryValue | FormDataEntryValue[];
+  };
+
+  const rawData: FormDataToRawType = {};
+  for (const key of formData.keys()) {
+    const val = formData.getAll(key);
+    if (val.length === 1) {
+      rawData[key] = val[0];
+    } else if (val.length > 1) {
+      rawData[key] = [...val];
+    }
+  }
+
+  return rawData;
+}
+```
+
 ## Appendix - Full Code
 
-```tsx title="add-action-function-creator" caption=""
+```tsx title="src/lib/actions/add-to-db-action-fn-creator.ts" caption="Full Code with some Documentation"
 import { ActionFunctionType } from "@/types/form-types";
-import { logToConsoleInDev } from "./log-in-dev-mode";
-import { validateFormDataWithZodSchema } from "./validate-formdata-with-zodtype";
 import { revalidatePath } from "next/cache";
-import { errorMsgToString } from "./formstate-error-to-string";
 import { AnyPgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
-import { addRowToDb } from "@/lib/db/queries/generic/add-row-to-db";
+import { logToConsoleInDev } from "@/utils/logging/logging-in-dev-mode";
+import { validateFormDataWithZodSchema } from "@/utils/zod/validate-formdata-with-zodtype";
+import { addRowToDb } from "../db/generics/add-row-to-db-table";
+import { errorMsgToString } from "@/utils/logging/error-message-to-string";
+import { formDataToRaw } from "@/utils/formdata-to-raw";
+import { ZodType } from "zod";
 
 export function addActionFunctionCreator<T extends AnyPgTable>(
   dbTable: T,
-  pathToRevalidate: string,
+  customInsertSchema: ZodType | null = null,
+  hasArrayInTable: boolean = false,
+  pathToRevalidate: string = "/admin",
 ): ActionFunctionType {
   return async (prevState, formData) => {
     if (prevState.success && prevState.message === "") {
@@ -24,12 +55,15 @@ export function addActionFunctionCreator<T extends AnyPgTable>(
     }
 
     try {
-      const rawData = Object.fromEntries(formData);
-      const insertSchema = createInsertSchema(dbTable);
+      const rawData = hasArrayInTable
+        ? formDataToRaw(formData)
+        : Object.fromEntries(formData);
+      const insertSchema = customInsertSchema ?? createInsertSchema(dbTable);
+
       const validatedData = validateFormDataWithZodSchema(
         insertSchema,
         rawData,
-      );
+      ) as T["$inferSelect"];
       const createdDataInDb = await addRowToDb(dbTable, validatedData);
       if (!createdDataInDb) {
         throw new Error("Unable to perform DB Action");

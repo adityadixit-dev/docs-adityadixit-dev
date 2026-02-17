@@ -34,3 +34,11 @@ export function validateFormDataWithZodSchema<T>(
   return result.data;
 }
 ```
+
+## Helper - Convert Error to String
+
+```ts title="src/utils/logging/error-message-to-string.ts" caption="returns the message component of an Error Object"
+export function errorMsgToString(err: unknown): string {
+  return err instanceof Error ? err.message : "Unknown Error Occurred";
+}
+```
